@@ -1,10 +1,9 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 from .models import BoardMessage
 
 def index(request):
-    content = 'Список оголошень\n\n'
-    for post in BoardMessage.objects.order_by('-published'):
-        content += post.title + '\n' + post.content +'\n\n'
-    return HttpResponse(content, content_type='text/plain; charset=utf-8')
-    
+    posts = BoardMessage.objects.order_by('-published')
+    context = {'posts': posts}
+    return render(request, 'board/index.html', context)
+            
