@@ -7,9 +7,19 @@ class BoardMessage(models.Model):
     content = models.TextField(null=True, blank=True, verbose_name='Опис')
     price = models.FloatField(null=True, blank=True, verbose_name='Ціна')
     published = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Опубліковано')
+    rubric = models.ForeignKey('Rubric', null=True, on_delete=models.PROTECT, verbose_name='Рубрика')
 
     class Meta:
         verbose_name = 'Оголошення'
         verbose_name_plural = 'Оголошення'
         ordering = ['-published']
+
+
+class Rubric(models.Model):
+    name = models.CharField(max_length=20, db_index=True, verbose_name='Назва')
+
+    class Meta:
+        verbose_name = 'Рубрика'
+        verbose_name_plural = 'Рубрики'
+        ordering = ['name']
     

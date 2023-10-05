@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import BoardMessage
+from .models import BoardMessage, Rubric
 
 class BoardMessageAdmin(admin.ModelAdmin):
     list_display = ('title', 'content', 'price', 'published')
@@ -10,3 +10,4 @@ class BoardMessageAdmin(admin.ModelAdmin):
     search_fields = ('title', 'content')
 
 admin.site.register(BoardMessage, BoardMessageAdmin)
+admin.site.register(Rubric)
