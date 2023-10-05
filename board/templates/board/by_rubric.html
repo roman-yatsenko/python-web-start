@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Головна - Дошка оголошень</title>
+    <title>{{ current_rubric.name }} :: Дошка оголошень</title>
 </head>
 <body>
     <h1>Оголошення</h1>
+    <h2>Рубрика: {{ current_rubric.name }}</h2>
     <div>
         <a href="/board/">Головна</a>
         {% for rubric in rubrics %}
@@ -17,7 +18,6 @@
     <div>
         <h2>{{ post.title }}</h2>
         <p>{{ post.content }}</p>
-        <p><a href="/board/{{ post.rubric.pk }}/">{{ post.rubric.name }}</a></p>
         <p>{{ post.published|date:"d.m.Y H:i:s" }}</p>
     </div>
     {% endfor %}
