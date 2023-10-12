@@ -1,26 +1,12 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Головна - Дошка оголошень</title>
-</head>
-<body>
-    <h1>Оголошення</h1>
-    <div>
-        <a href="{% url 'index' %}">Головна</a>
-        {% for rubric in rubrics %}
-        <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
-        {% endfor %}
-        <a href="{% url 'add' %}">Додати</a>
-    </div>
-    {% for post in posts %}
-    <div>
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.content }}</p>
-        <p><a href="{% url 'by_rubric' post.rubric.pk %}">{{ post.rubric.name }}</a></p>
-        <p>{{ post.published|date:"d.m.Y H:i:s" }}</p>
-    </div>
-    {% endfor %}
-</body>
-</html>
+{% extends "layout/base.html" %}
+
+{% block content %}
+{% for post in posts %}
+<div>
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.content }}</p>
+    <p><a href="{% url 'by_rubric' post.rubric.pk %}">{{ post.rubric.name }}</a></p>
+    <p>{{ post.published|date:"d.m.Y H:i:s" }}</p>
+</div>
+{% endfor %}
+{% endblock content %}

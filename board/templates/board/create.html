@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Додавання оголошення :: Дошка оголошень</title>
-</head>
-<body>
-    <h1>Додавання оголошення</h1>
-    <div>
-        <a href="{% url 'index' %}">Головна</a>
-        {% for rubric in rubrics %}
-        <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
-        {% endfor %}
-    </div>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Додати">
-    </form>
-</body>
-</html>
+{% extends "layout/base.html" %}
+
+{% block title %}Додавання оголошення{% endblock title %}
+
+{% block content %}
+<h2>Додавання оголошення</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Додати">
+</form>
+{% endblock content %}
