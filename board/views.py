@@ -1,6 +1,19 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 
+from .forms import BoardMessageForm
 from .models import BoardMessage, Rubric
+
+class BoardMessageCreateView(CreateView):
+    template_name = 'board/create.html'
+    form_class = BoardMessageForm
+    success_url = '/board/'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["rubrics"] = Rubric.objects.all()
+        return context
+    
 
 def index(request):
     posts = BoardMessage.objects.all()
