@@ -1,0 +1,30 @@
+body {
+    background-color: azure;
+}
+
+header h1 {
+    font-size: 40pt;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: beige;
+}
+
+nav {
+    width: 150px;
+    float: left;
+    font-size: 16pt;
+}
+
+nav a {
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+}
+
+section {
+    margin-left: 170px;
+}
+
+section div h2 {
+    border-bottom: 1px solid black;
+}
