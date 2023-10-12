@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 
 from .forms import BoardMessageForm
@@ -7,7 +8,7 @@ from .models import BoardMessage, Rubric
 class BoardMessageCreateView(CreateView):
     template_name = 'board/create.html'
     form_class = BoardMessageForm
-    success_url = '/board/'
+    success_url = reverse_lazy('index')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
